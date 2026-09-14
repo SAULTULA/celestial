@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Radio online| Alabando a Dios</title>
+  <title>CELESTIAL FM 106.7 | Desde Campo Grande Misiones</title>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
@@ -22,7 +22,7 @@
         <div class="live-badge"><span class="dot"></span> TRANSMISIÓN EN VIVO</div>
       </div>
       <div class="header-title">
-        <img src="./Logo.png" alt="Hits20 Radio" class="floating-logo">
+        <img src="./Logo.png" alt="CELESTIAL FM 106.7" class="floating-logo">
       </div>
       <div style="display: flex; align-items: center; gap: 15px;">
         <div class="theme-switcher">
@@ -48,8 +48,8 @@
         
         <div class="vol-controls" style="display: flex; justify-content: center; align-items: center; gap: 20px;">
             <div class="volume-wrapper" style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
-              <input type="range" id="vol-slider" class="volume-slider" min="0" max="1" step="0.01" value="0.5">
-              <span id="volume-label" style="font-weight: 800; color: var(--color-primary); font-size: 0.9rem;">50%</span>
+              <input type="range" id="vol-slider" class="volume-slider" min="0" max="1" step="0.01" value="1">
+              <span id="volume-label" style="font-weight: 800; color: var(--color-primary); font-size: 0.9rem;">100%</span>
             </div>
         </div>
 
@@ -58,27 +58,33 @@
         </button>
 
         <!-- REDES (FLOTANTES A LA DERECHA) -->
+        <!-- NOTA: Pega aquí la URL de tus propias redes sociales reemplazando el "#" -->
         <div class="social-floating">
-          <a href="https://www.facebook.com/hits20radio/" target="_blank" class="social-cube fb"><i class="fab fa-facebook-f"></i></a>
-          <a href="https://www.youtube.com/@hits20radio" target="_blank" class="social-cube yt"><i class="fab fa-youtube"></i></a>
-          <a href="https://www.instagram.com/hits20online/" target="_blank" class="social-cube ig"><i class="fab fa-instagram"></i></a>
-          <a href="https://wa.me/5492664728261" target="_blank" class="social-cube wa"><i class="fab fa-whatsapp"></i></a>
-          <a href="https://www.tiktok.com/@hits20online?_r=1&_t=ZS-980S8qdbZa9" target="_blank" class="social-cube tk"><i class="fab fa-tiktok"></i></a>
+          <a href="#" target="_blank" class="social-cube fb" title="Pega aquí tu URL de Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" target="_blank" class="social-cube yt" title="Pega aquí tu URL de YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="#" target="_blank" class="social-cube ig" title="Pega aquí tu URL de Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" target="_blank" class="social-cube wa" title="Pega aquí tu URL de WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="#" target="_blank" class="social-cube tk" title="Pega aquí tu URL de TikTok"><i class="fab fa-tiktok"></i></a>
         </div>
 
       </div>
     </section>
 
      
-        <div class="ksm-watermark-local" style="display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0.2; margin-top: 10px; pointer-events: none;">
-        <img src="./ksm.png" alt="KSM" style="width: 70px; border-radius: 10px;" onerror="this.src='./ksm.png'">
-        <span style="color: #66fcf1; font-size: 11px; font-weight: 800; letter-spacing: 2px; margin-top: 5px;">© KSM SERVICIOS</span>
-      </div>
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 10px; gap: 10px;">
+          <div class="ksm-watermark-local" style="display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0.2; pointer-events: none;">
+            <img src="./ksm.png" alt="KSM" style="width: 70px; border-radius: 10px;">
+            <span style="color: #66fcf1; font-size: 11px; font-weight: 800; letter-spacing: 2px; margin-top: 5px;">© KSM SERVICIOS</span>
+          </div>
+          <a href="https://wa.me/377515277400" target="_blank" style="display: flex; align-items: center; gap: 8px; padding: 10px 22px; background: #25d366; color: #fff; border-radius: 50px; font-weight: 800; font-size: 0.95rem; text-decoration: none; box-shadow: 0 4px 15px rgba(37,211,102,0.4); transition: all 0.3s;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 6px 20px rgba(37,211,102,0.6)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 15px rgba(37,211,102,0.4)'">
+            <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i> Escribinos
+          </a>
+        </div>
     </section>
 
     <!-- INSTALL (CENTER BOTTOM) -->
     <section class="bento__card card-install" id="install-view" style="display: flex; align-items: center; justify-content: space-between; padding: 20px 30px;">
-      <h2 class="card-title" style="margin: 0;"><i class="fas fa-mobile-alt"></i> Lleva la música</h2>
+      <h2 class="card-title" style="margin: 0;"><i class="fas fa-mobile-alt"></i> CELESTIAL FM</h2>
       <button class="install-btn" onclick="triggerInstall()" style="margin: 0; padding: 10px 20px; font-size: 1rem;">
         <i class="fas fa-download"></i> Instalar App
       </button>
@@ -108,6 +114,7 @@
     </div>
   </section>
 
+  <!-- PEGA AQUÍ LA URL DE TU STREAMING DE RADIO -->
   <audio id="real-audio" src="https://stream.zeno.fm/75fyk31hk48uv"></audio>
 
   <script>
@@ -135,8 +142,8 @@
     const playBtn = document.getElementById('play-pause-btn');
     const iconPlay = document.getElementById('icon-play');
     
-    // Auto-start volume at 50%
-    audio.volume = 0.5;
+    // Auto-start volume at 100%
+    audio.volume = 1.0;
 
     // Intentar reproducir automáticamente al cargar
     let isPlaying = false;
@@ -150,7 +157,7 @@
     });
 
     const volSlider = document.getElementById('vol-slider');
-    const volLabel = document.getElementById('vol-value');
+    const volLabel = document.getElementById('volume-label');
 
     volSlider.addEventListener('input', (e) => {
       const newVol = e.target.value;
@@ -168,6 +175,7 @@
         isPlaying = false;
       } else {
         // Refrescar el source para evitar problemas de buffer en vivo
+        // PEGA AQUÍ LA MISMA URL DE TU STREAMING DE RADIO
         audio.src = "https://stream.zeno.fm/75fyk31hk48uv";
         audio.load();
         audio.play().then(() => {
