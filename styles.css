@@ -318,9 +318,10 @@ body {
   padding: 15px 25px;
   overflow: hidden;
 }
-.news-label {
+.ticker-badge {
   background: var(--accent-color); color: #0b0c10; font-weight: 900;
   padding: 5px 15px; border-radius: 10px; margin-right: 20px; white-space: nowrap;
+  font-size: 0.85rem; letter-spacing: 1px;
 }
 .ticker-track { flex: 1; overflow: hidden; display: flex; align-items: center; }
 .ticker-marquee {
@@ -332,10 +333,131 @@ body {
 
 @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-/* RESPONSIVE */
-@media(max-width: 1024px) {
+/* ============================================
+   RESPONSIVE — TABLET & MOBILE
+   ============================================ */
+@media (max-width: 1024px) {
   .bento {
-    display: flex; flex-direction: column; height: auto; overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    height: auto;
   }
-  body { overflow: auto; }
+  body { overflow-y: auto; }
+
+  .card-guitar {
+    min-height: 320px;
+  }
+
+  /* Controles apilados en móvil */
+  .amp-controls {
+    flex-direction: column !important;
+    gap: 16px !important;
+    padding: 16px !important;
+    align-items: center !important;
+  }
+
+  /* Fila superior: slider + play en horizontal */
+  .vol-controls {
+    order: 1;
+    width: 100%;
+    justify-content: center !important;
+  }
+
+  .play-btn {
+    order: 2;
+    margin: 0 !important;
+  }
+
+  /* Redes sociales: centradas en fila completa debajo del play */
+  .social-floating {
+    order: 3;
+    margin-left: 0 !important;
+    justify-content: center !important;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 10px !important;
+  }
+
+  .social-cube {
+    width: 42px;
+    height: 42px;
+  }
+
+  /* Ticker font más pequeña */
+  .ticker-item { font-size: 1rem; }
+
+  /* Header ajustado */
+  .card-header {
+    padding: 0 15px;
+  }
+  .header-clock {
+    font-size: 1.1rem;
+  }
+  .live-badge {
+    font-size: 0.75rem;
+  }
+  .floating-logo {
+    height: 60px;
+  }
+
+  /* KSM + WhatsApp */
+  .ksm-watermark-local img {
+    width: 55px !important;
+  }
 }
+
+@media (max-width: 480px) {
+  .bento {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .card-guitar {
+    min-height: 280px;
+  }
+
+  .amp-controls {
+    gap: 12px !important;
+    padding: 12px !important;
+  }
+
+  .play-btn {
+    width: 52px !important;
+    height: 52px !important;
+    font-size: 1.2rem !important;
+  }
+
+  .social-cube {
+    width: 38px;
+    height: 38px;
+    font-size: 1rem;
+    border-radius: 10px;
+  }
+
+  /* Volume slider más ancho en móvil */
+  #vol-slider {
+    width: 160px;
+  }
+
+  .ticker-item { font-size: 0.9rem; }
+  .ticker-badge { font-size: 0.75rem; padding: 4px 10px; margin-right: 10px; }
+
+  .card-install {
+    flex-direction: column !important;
+    gap: 12px;
+    text-align: center;
+  }
+  .card-install h2 {
+    font-size: 1rem;
+  }
+
+  .floating-logo {
+    height: 50px;
+  }
+
+  .header-clock {
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+  }
+}
+
