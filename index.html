@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Radio online| Alabando a Dios</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="manifest" href="./manifest.json" />
+</head>
+
+<body class="app">
+
+  <!-- THE BENTO GRID DASHBOARD -->
+  <main class="bento">
+    
+    <!-- HEADER -->
+    <header class="bento__card card-header">
+      <div class="header-logo">
+        <div class="live-badge"><span class="dot"></span> TRANSMISIÓN EN VIVO</div>
+      </div>
+      <div class="header-title">
+        <img src="./Logo.png" alt="Hits20 Radio" class="floating-logo">
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px;">
+        <div class="theme-switcher">
+          <button class="theme-btn" data-color="#b026ff" style="background: #b026ff; box-shadow: 0 0 10px #b026ff;"></button>
+          <button class="theme-btn" data-color="#ff7300" style="background: #ff7300; box-shadow: 0 0 10px #ff7300;"></button>
+          <button class="theme-btn" data-color="#66fcf1" style="background: #66fcf1; box-shadow: 0 0 10px #66fcf1;"></button>
+        </div>
+        <div class="header-clock" id="live-clock">00:00:00</div>
+      </div>
+    </header>
+
+    <!-- GUITAR PLAYER (CENTER COLUMN) -->
+    <section class="bento__card card-guitar">
+      <div class="guitar-bg"></div>
+      
+      <!-- CSS MIST/FOG LAYER -->
+      <div class="mist-container">
+        <div class="mist-layer mist-1"></div>
+        <div class="mist-layer mist-2"></div>
+      </div>
+      
+      <div class="amp-controls" style="display: flex; align-items: center; justify-content: center; gap: 30px; padding: 20px; z-index: 5; margin-top: auto; width: 100%;">
+        
+        <div class="vol-controls" style="display: flex; justify-content: center; align-items: center; gap: 20px;">
+            <div class="volume-wrapper" style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
+              <input type="range" id="vol-slider" class="volume-slider" min="0" max="1" step="0.01" value="0.5">
+              <span id="volume-label" style="font-weight: 800; color: var(--color-primary); font-size: 0.9rem;">50%</span>
+            </div>
+        </div>
+
+        <button class="play-btn" id="play-pause-btn" style="margin: 0 20px;">
+          <i class="fas fa-pause" id="icon-play"></i>
+        </button>
+
+        <!-- REDES (FLOTANTES A LA DERECHA) -->
+        <div class="social-floating">
+          <a href="https://www.facebook.com/hits20radio/" target="_blank" class="social-cube fb"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.youtube.com/@hits20radio" target="_blank" class="social-cube yt"><i class="fab fa-youtube"></i></a>
+          <a href="https://www.instagram.com/hits20online/" target="_blank" class="social-cube ig"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/5492664728261" target="_blank" class="social-cube wa"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://www.tiktok.com/@hits20online?_r=1&_t=ZS-980S8qdbZa9" target="_blank" class="social-cube tk"><i class="fab fa-tiktok"></i></a>
+        </div>
+
+      </div>
+    </section>
+
+     
+        <div class="ksm-watermark-local" style="display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0.2; margin-top: 10px; pointer-events: none;">
+        <img src="./ksm.png" alt="KSM" style="width: 70px; border-radius: 10px;" onerror="this.src='./ksm.png'">
+        <span style="color: #66fcf1; font-size: 11px; font-weight: 800; letter-spacing: 2px; margin-top: 5px;">© KSM SERVICIOS</span>
+      </div>
+    </section>
+
+    <!-- INSTALL (CENTER BOTTOM) -->
+    <section class="bento__card card-install" id="install-view" style="display: flex; align-items: center; justify-content: space-between; padding: 20px 30px;">
+      <h2 class="card-title" style="margin: 0;"><i class="fas fa-mobile-alt"></i> Lleva la música</h2>
+      <button class="install-btn" onclick="triggerInstall()" style="margin: 0; padding: 10px 20px; font-size: 1rem;">
+        <i class="fas fa-download"></i> Instalar App
+      </button>
+    </section>
+
+    <!-- NEWS TICKER (BOTTOM WIDE) -->
+    <footer class="bento__card card-ticker">
+      <div class="ticker-badge">VERSÍCULOS</div>
+      <div class="ticker-track">
+        <div class="ticker-marquee" id="news-marquee">
+          <span class="ticker-item">Conectando...</span>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- IN-APP NEWS READER (BELOW BENTO GRID) -->
+  <section class="bento__card card-news-reader" id="news-reader" style="display: none;">
+    <div class="reader-header">
+      <button class="back-btn" id="btn-back-news"><i class="fas fa-arrow-left"></i> Cerrar Noticia</button>
+    </div>
+    <div class="reader-body">
+      <img id="news-img" src="" alt="Noticia" style="display: none;">
+      <h2 id="news-title">Cargando...</h2>
+      <div id="news-content">Contenido...</div>
+      <a id="news-link" href="#" target="_blank" class="read-more-btn" style="display: inline-block; margin-top: 20px; padding: 15px 30px; background: var(--accent-color); color: #000; text-decoration: none; border-radius: 10px; font-weight: 800; font-size: 1.1rem; box-shadow: 0 5px 15px rgba(0,0,0,0.5);">📰 Leer nota completa en el sitio original</a>
+    </div>
+  </section>
+
+  <audio id="real-audio" src="https://stream.zeno.fm/75fyk31hk48uv"></audio>
+
+  <script>
+    // CLOCK
+    function updateClock() {
+      const now = new Date();
+      document.getElementById('live-clock').textContent = 
+        String(now.getHours()).padStart(2, '0') + ':' + 
+        String(now.getMinutes()).padStart(2, '0') + ':' + 
+        String(now.getSeconds()).padStart(2, '0');
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // THEME SWITCHER
+    const themeBtns = document.querySelectorAll('.theme-btn');
+    themeBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const color = btn.getAttribute('data-color');
+        document.documentElement.style.setProperty('--accent-color', color);
+      });
+    });
+
+    const audio = document.getElementById('real-audio');
+    const playBtn = document.getElementById('play-pause-btn');
+    const iconPlay = document.getElementById('icon-play');
+    
+    // Auto-start volume at 50%
+    audio.volume = 0.5;
+
+    // Intentar reproducir automáticamente al cargar
+    let isPlaying = false;
+    audio.play().then(() => {
+      isPlaying = true;
+      iconPlay.classList.replace('fa-play', 'fa-pause');
+    }).catch(e => {
+      // Browser blocked autoplay
+      isPlaying = false;
+      iconPlay.classList.replace('fa-pause', 'fa-play');
+    });
+
+    const volSlider = document.getElementById('vol-slider');
+    const volLabel = document.getElementById('vol-value');
+
+    volSlider.addEventListener('input', (e) => {
+      const newVol = e.target.value;
+      audio.volume = newVol;
+      volLabel.textContent = Math.round(newVol * 100) + '%';
+      
+      // LATIDO DYNAMIC INTENSITY
+      document.documentElement.style.setProperty('--pulse-intensity', newVol);
+    });
+
+    playBtn.addEventListener('click', () => {
+      if (isPlaying) {
+        audio.pause();
+        iconPlay.classList.replace('fa-pause', 'fa-play');
+        isPlaying = false;
+      } else {
+        // Refrescar el source para evitar problemas de buffer en vivo
+        audio.src = "https://stream.zeno.fm/75fyk31hk48uv";
+        audio.load();
+        audio.play().then(() => {
+          iconPlay.classList.replace('fa-play', 'fa-pause');
+          isPlaying = true;
+        }).catch(console.error);
+      }
+    });
+
+    // BIBLE VERSES TICKER
+    const bibleVerses = [
+      "Juan 3:16 - Porque de tal manera amó Dios al mundo, que ha dado a su Hijo unigénito...",
+      "Salmos 23:1 - Jehová es mi pastor; nada me faltará.",
+      "Filipenses 4:13 - Todo lo puedo en Cristo que me fortalece.",
+      "Proverbios 3:5 - Fíate de Jehová de todo tu corazón, y no te apoyes en tu propia prudencia.",
+      "Isaías 41:10 - No temas, porque yo estoy contigo; no desmayes, porque yo soy tu Dios...",
+      "Romanos 8:28 - Y sabemos que a los que aman a Dios, todas las cosas les ayudan a bien...",
+      "Josué 1:9 - Mira que te mando que te esfuerces y seas valiente; no temas ni desmayes...",
+      "Mateo 11:28 - Venid a mí todos los que estáis trabajados y cargados, y yo os haré descansar.",
+      "Salmos 119:105 - Lámpara es a mis pies tu palabra, y lumbrera a mi camino."
+    ];
+
+    function loadTicker() {
+      const marquee = document.getElementById('news-marquee');
+      if (bibleVerses.length > 0) {
+        const html = bibleVerses.map(verse => 
+          `<span class="ticker-item" style="cursor: default;">${verse}</span>`
+        ).join('<span class="ticker-sep">◆</span>');
+        marquee.innerHTML = html + '<span class="ticker-sep">◆</span>' + html;
+      }
+    }
+    loadTicker();
+
+    document.getElementById('btn-back-news').onclick = () => {
+      document.getElementById('news-reader').style.display = 'none';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    // PWA
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js'));
+    }
+    window.deferredPrompt = null;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      window.deferredPrompt = e;
+    });
+    function triggerInstall() {
+      if (window.deferredPrompt) {
+        window.deferredPrompt.prompt();
+        window.deferredPrompt.userChoice.then(() => { window.deferredPrompt = null; });
+      } else {
+        alert("App ya instalada.");
+      }
+    }
+  </script>
+</body>
+</html>

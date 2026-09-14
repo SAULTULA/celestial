@@ -1,0 +1,25 @@
+:root {
+  --color-bg-deep: #050014;
+  --color-blob-1: #8a2be2;
+  --color-blob-2: #ff0055;
+  --color-blob-3: #00e5ff;
+  
+  --color-glass: rgba(255, 255, 255, 0.03);
+  --color-glass-border: rgba(255, 255, 255, 0.08);
+  --color-text: #ffffff;
+  --color-text-muted: #a0a0b0;
+  
+  --font-main: 'Outfit', sans-serif;
+  
+  --spacing-sm: 10px;
+  --spacing-md: 20px;
+  --spacing-lg: 30px;
+  --spacing-xl: 40px;
+  
+  --border-radius-sm: 12px;
+  --border-radius-md: 24px;
+  --border-radius-full: 9999px;
+  
+  --shadow-neon: 0 0 20px rgba(138, 43, 226, 0.5);
+  --shadow-neon-play: 0 0 30px rgba(0, 229, 255, 0.6);
+}
