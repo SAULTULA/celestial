@@ -1,99 +1,268 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#0a0a1a">
-  <meta name="description" content="Celestial FM 106.7 — Radio Cristiana desde Campo Grande, Misiones. Una Radio con Propósito.">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CELESTIAL FM 106.7 | Desde Campo Grande Misiones</title>
 
-  <!-- Favicon e Iconos -->
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-  <link rel="icon" type="image/png" sizes="192x192" href="image/logo-192.png">
-  <link rel="icon" type="image/png" sizes="512x512" href="image/logo-512.png">
-  <link rel="apple-touch-icon" href="image/logo-192.png">
+  <!-- Favicon y Touch Icons -->
+  <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+  <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png" />
+  <link rel="apple-touch-icon" href="./icon-192.png" />
 
-  <!-- PWA -->
-  <link rel="manifest" href="manifest.json">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Celestial FM">
-
-  <title>Celestial FM 106.7 — Campo Grande, Misiones</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <link rel="stylesheet" href="./styles.css?v=1.4" />
+  <link rel="manifest" href="./manifest.json" />
 </head>
-<body>
 
-  <!-- FONDO DINÁMICO -->
-  <div id="bg-blur"></div>
-  <div id="bg-overlay"></div>
+<body class="app">
 
-  <!-- BOTÓN INSTALAR APP (oculto por defecto) -->
-  <button id="btnInstall" class="btn-install" hidden>
-    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-      <path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/>
-    </svg>
-    <span>Instalar App</span>
-  </button>
-
-  <!-- REPRODUCTOR -->
-  <div class="player">
-    <img src="image/logo.png" alt="Celestial FM" class="logo-badge" onerror="this.src='logo.png'">
-
-    <div class="station-name">Celestial FM</div>
-    <div class="station-slogan">106.7 · Campo Grande, Misiones</div>
-
-    <!-- VINILO -->
-    <div class="vinyl-wrapper">
-      <div class="vinyl-disc" id="vinylDisc">
-        <img src="image/logo.png" alt="Cover" class="vinyl-cover" id="vinylCover"
-             onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect fill=%22%230a0a1a%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%22 y=%2255%22 font-size=%2230%22 text-anchor=%22middle%22 fill=%22%23d4af37%22%3E✝%3C/text%3E%3C/svg%3E'">
+  <!-- THE BENTO GRID DASHBOARD -->
+  <main class="bento">
+    
+    <!-- HEADER -->
+    <header class="bento__card card-header">
+      <div class="header-logo">
+        <div class="live-badge"><span class="dot"></span> TRANSMISIÓN EN VIVO</div>
       </div>
-    </div>
+      <div class="header-title">
+        <img src="./logo.png" alt="CELESTIAL FM 106.7" class="floating-logo">
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px;">
+        <div class="theme-switcher">
+          <button class="theme-btn" data-color="#b026ff" style="background: #b026ff; box-shadow: 0 0 10px #b026ff;"></button>
+          <button class="theme-btn" data-color="#ff7300" style="background: #ff7300; box-shadow: 0 0 10px #ff7300;"></button>
+          <button class="theme-btn" data-color="#66fcf1" style="background: #66fcf1; box-shadow: 0 0 10px #66fcf1;"></button>
+        </div>
+        <div class="header-clock" id="live-clock">00:00:00</div>
+      </div>
+    </header>
 
-    <!-- INFO CANCIÓN -->
-    <div class="song-title" id="songTitle">En Vivo</div>
-    <div class="song-artist" id="songArtist">Celestial FM 106.7</div>
+    <!-- GUITAR PLAYER (CENTER COLUMN) -->
+    <section class="bento__card card-guitar">
+      <div class="guitar-bg"></div>
+      
+      <!-- CSS MIST/FOG LAYER -->
+      <div class="mist-container">
+        <div class="mist-layer mist-1"></div>
+        <div class="mist-layer mist-2"></div>
+      </div>
+      
+      <div class="amp-controls" style="display: flex; align-items: center; justify-content: center; gap: 30px; padding: 20px; z-index: 5; margin-top: auto; width: 100%;">
+        
+        <div class="vol-controls" style="display: flex; justify-content: center; align-items: center; gap: 20px;">
+            <div class="volume-wrapper" style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
+              <input type="range" id="vol-slider" class="volume-slider" min="0" max="1" step="0.01" value="1">
+              <span id="volume-label" style="font-weight: 800; color: var(--color-primary); font-size: 0.9rem;">100%</span>
+            </div>
+        </div>
 
-    <!-- VISUALIZADOR -->
-    <div class="visualizer" id="visualizer"></div>
-
-    <!-- CONTROLES -->
-    <div class="controls">
-      <button class="btn btn-play" id="btnPlay" aria-label="Reproducir">
-        <div class="spinner"></div>
-        <svg viewBox="0 0 24 24" id="playIcon">
-          <path d="M8 5v14l11-7z"/>
-        </svg>
-      </button>
-
-      <div class="volume-wrap">
-        <button class="btn btn-volume" id="btnVolume" aria-label="Volumen">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-            <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
-          </svg>
+        <button class="play-btn" id="play-pause-btn" style="margin: 0 20px;">
+          <i class="fas fa-play" id="icon-play"></i>
         </button>
-        <div class="volume-pop" id="volumePop">
-          <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.8">
+
+
+      </div>
+    </section>
+
+    <!-- AUDIENCE / CONTACT CARD -->
+    <section class="bento__card card-audience">
+      <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; gap: 12px; padding: 20px;">
+        <div class="ksm-watermark-local" style="display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0.35; pointer-events: none;">
+          <img src="./ksm.png" alt="KSM" style="width: 75px; border-radius: 10px;">
+          <span style="color: #66fcf1; font-size: 11px; font-weight: 800; letter-spacing: 2px; margin-top: 5px;">© KSM SERVICIOS</span>
+        </div>
+        <a href="https://wa.me/377515277400" target="_blank" style="display: flex; align-items: center; gap: 8px; padding: 10px 22px; background: #25d366; color: #fff; border-radius: 50px; font-weight: 800; font-size: 0.95rem; text-decoration: none; box-shadow: 0 4px 15px rgba(37,211,102,0.4); transition: all 0.3s;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 6px 20px rgba(37,211,102,0.6)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 15px rgba(37,211,102,0.4)'">
+          <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i> Escribinos
+        </a>
+      </div>
+    </section>
+
+    <!-- INSTALL (CENTER BOTTOM) -->
+    <section class="bento__card card-install" id="install-view" style="display: flex; align-items: center; justify-content: space-between; padding: 20px 30px;">
+      <h2 class="card-title" style="margin: 0;"><i class="fas fa-mobile-alt"></i> CELESTIAL FM</h2>
+      <button class="install-btn" onclick="triggerInstall()" style="margin: 0; padding: 10px 20px; font-size: 1rem;">
+        <i class="fas fa-download"></i> Instalar App
+      </button>
+    </section>
+
+    <!-- NEWS TICKER (BOTTOM WIDE) -->
+    <footer class="bento__card card-ticker">
+      <div class="ticker-badge">VERSÍCULOS</div>
+      <div class="ticker-track">
+        <div class="ticker-marquee" id="news-marquee">
+          <span class="ticker-item">Conectando...</span>
         </div>
       </div>
+    </footer>
+  </main>
+
+  <!-- IN-APP NEWS READER (BELOW BENTO GRID) -->
+  <section class="bento__card card-news-reader" id="news-reader" style="display: none;">
+    <div class="reader-header">
+      <button class="back-btn" id="btn-back-news"><i class="fas fa-arrow-left"></i> Cerrar Noticia</button>
     </div>
-
-    <!-- TICKER -->
-    <div class="ticker-wrap">
-      <div class="ticker-text" id="tickerText">Cargando versículo...</div>
+    <div class="reader-body">
+      <img id="news-img" src="" alt="Noticia" style="display: none;">
+      <h2 id="news-title">Cargando...</h2>
+      <div id="news-content">Contenido...</div>
+      <a id="news-link" href="#" target="_blank" class="read-more-btn" style="display: inline-block; margin-top: 20px; padding: 15px 30px; background: var(--accent-color); color: #000; text-decoration: none; border-radius: 10px; font-weight: 800; font-size: 1.1rem; box-shadow: 0 5px 15px rgba(0,0,0,0.5);">📰 Leer nota completa en el sitio original</a>
     </div>
+  </section>
 
-    <div class="footer-info">Una Radio con Propósito</div>
-  </div>
+  <!-- STREAMING DE RADIO -->
+  <audio id="real-audio" src="https://stream.zeno.fm/mfer4shs398uv" preload="auto"></audio>
 
-  <!-- AUDIO OCULTO -->
-  <audio id="audioPlayer" preload="none" crossorigin="anonymous">
-    <source src="https://stream.zeno.fm/mfer4shs398uv" type="audio/mpeg">
-  </audio>
+  <script>
+    // URL DE LA SEÑAL DE AUDIO
+    const STREAM_URL = "https://stream.zeno.fm/mfer4shs398uv";
 
-  <!-- SCRIPTS -->
-  <script src="js/app.js"></script>
-  <script src="js/pwa.js"></script>
+    // CLOCK
+    function updateClock() {
+      const now = new Date();
+      document.getElementById('live-clock').textContent = 
+        String(now.getHours()).padStart(2, '0') + ':' + 
+        String(now.getMinutes()).padStart(2, '0') + ':' + 
+        String(now.getSeconds()).padStart(2, '0');
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // THEME SWITCHER
+    const themeBtns = document.querySelectorAll('.theme-btn');
+    themeBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const color = btn.getAttribute('data-color');
+        document.documentElement.style.setProperty('--accent-color', color);
+      });
+    });
+
+    const audio = document.getElementById('real-audio');
+    const playBtn = document.getElementById('play-pause-btn');
+    const iconPlay = document.getElementById('icon-play');
+    
+    // Auto-start volume at 100%
+    audio.volume = 1.0;
+
+    let isPlaying = false;
+
+    function setPlayingState(playing) {
+      isPlaying = playing;
+      if (playing) {
+        iconPlay.classList.remove('fa-play');
+        iconPlay.classList.add('fa-pause');
+      } else {
+        iconPlay.classList.remove('fa-pause');
+        iconPlay.classList.add('fa-play');
+      }
+    }
+
+    function playAudioStream() {
+      // Si la URL cambió o para refrescar el búfer en vivo
+      if (!audio.src || audio.src !== STREAM_URL) {
+        audio.src = STREAM_URL;
+      }
+      audio.load();
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          setPlayingState(true);
+        }).catch(err => {
+          // Autoplay prevenido por política del navegador o error
+          console.warn("Reproducción prevenida o esperando interacción del usuario:", err);
+          setPlayingState(false);
+        });
+      }
+    }
+
+    function pauseAudioStream() {
+      audio.pause();
+      setPlayingState(false);
+    }
+
+    // Intentar reproducir automáticamente al cargar
+    playAudioStream();
+
+    const volSlider = document.getElementById('vol-slider');
+    const volLabel = document.getElementById('volume-label');
+
+    volSlider.addEventListener('input', (e) => {
+      const newVol = parseFloat(e.target.value);
+      audio.volume = newVol;
+      volLabel.textContent = Math.round(newVol * 100) + '%';
+      
+      // LATIDO DYNAMIC INTENSITY
+      document.documentElement.style.setProperty('--pulse-intensity', newVol);
+    });
+
+    playBtn.addEventListener('click', () => {
+      if (isPlaying) {
+        pauseAudioStream();
+      } else {
+        playAudioStream();
+      }
+    });
+
+    // Escuchadores de eventos nativos del audio
+    audio.addEventListener('playing', () => setPlayingState(true));
+    audio.addEventListener('pause', () => setPlayingState(false));
+    audio.addEventListener('ended', () => setPlayingState(false));
+    audio.addEventListener('error', (e) => {
+      console.warn("Error en la señal de audio:", e);
+      setPlayingState(false);
+    });
+
+    // BIBLE VERSES TICKER
+    const bibleVerses = [
+      "Juan 3:16 - Porque de tal manera amó Dios al mundo, que ha dado a su Hijo unigénito...",
+      "Salmos 23:1 - Jehová es mi pastor; nada me faltará.",
+      "Filipenses 4:13 - Todo lo puedo en Cristo que me fortalece.",
+      "Proverbios 3:5 - Fíate de Jehová de todo tu corazón, y no te apoyes en tu propia prudencia.",
+      "Isaías 41:10 - No temas, porque yo estoy contigo; no desmayes, porque yo soy tu Dios...",
+      "Romanos 8:28 - Y sabemos que a los que aman a Dios, todas las cosas les ayudan a bien...",
+      "Josué 1:9 - Mira que te mando que te esfuerces y seas valiente; no temas ni desmayes...",
+      "Mateo 11:28 - Venid a mí todos los que estáis trabajados y cargados, y yo os haré descansar.",
+      "Salmos 119:105 - Lámpara es a mis pies tu palabra, y lumbrera a mi camino."
+    ];
+
+    function loadTicker() {
+      const marquee = document.getElementById('news-marquee');
+      if (bibleVerses.length > 0) {
+        const html = bibleVerses.map(verse => 
+          `<span class="ticker-item" style="cursor: default;">${verse}</span>`
+        ).join('<span class="ticker-sep">◆</span>');
+        marquee.innerHTML = html + '<span class="ticker-sep">◆</span>' + html;
+      }
+    }
+    loadTicker();
+
+    document.getElementById('btn-back-news').onclick = () => {
+      document.getElementById('news-reader').style.display = 'none';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    // PWA
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js'));
+    }
+    window.deferredPrompt = null;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      window.deferredPrompt = e;
+    });
+    function triggerInstall() {
+      if (window.deferredPrompt) {
+        window.deferredPrompt.prompt();
+        window.deferredPrompt.userChoice.then(() => { window.deferredPrompt = null; });
+      } else {
+        alert("App ya instalada.");
+      }
+    }
+  </script>
 </body>
 </html>
